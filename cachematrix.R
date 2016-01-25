@@ -13,7 +13,6 @@
 # "For this assignment, assume that the matrix supplied is always invertible."
 
 
-
 makeCacheMatrix <- function(x = matrix()) {
 
 #Check if supplied value is a matrix or not, if not print error and return 1
@@ -92,14 +91,17 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
-
+## The cacheSolve fucntion, gets the inverse of teh matrix.  Setting times for when it starts and finished
+## this fuction is to take the matrix that was generated with makecachedmatrix.  
+## it will use the $getmatrix and $setmatrixinv functions of the object passed to it to get the matrix to do the inversion on as well
+## to set the cache of the inversion of the matrix.  
 cacheSolve <- function(x, ...) {
-  
+  ##checks if the matrix cache is already present / is not null.  If it is, returns the cache version of the inverse
   if(!is.null(x$GetMatrixInv())) {
     print("using cached version")
     return(x$GetMatrixInv())
   }
+  ##comments to user that it is starting calcuations, storing the variable and when it finally completes.  
   
   print(paste0("Calcucating new matrix inversaion. started at ", Sys.time()))
   Inv <- solve(x$getMatrix())
